@@ -1,8 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.JiayiLisAndroidLabs" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/my_primary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/my_secondary</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/my_statusbar</item>
+        <!-- Customize your theme here. -->
+        <item name="android:textColor">@color/my_text</item>
     </style>
 
     <style name="Theme.JiayiLisAndroidLabs" parent="Base.Theme.JiayiLisAndroidLabs" />
