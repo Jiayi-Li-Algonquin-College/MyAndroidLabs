@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.JiayiLisAndroidLabs" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.JiayiLisAndroidLabs" parent="Theme.Material3.DayNight">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/my_primary</item>
         <!-- Secondary brand color. -->
@@ -10,6 +10,7 @@
         <!-- Customize your theme here. -->
         <item name="android:textColor">@color/my_text</item>
     </style>
+    asdfsdafasdfasdfasdfsadf
 
     <style name="Theme.JiayiLisAndroidLabs" parent="Base.Theme.JiayiLisAndroidLabs" />
 </resources>
