@@ -2,4 +2,12 @@
     <string name="app_name">JiayiLi\'s-Android-Labs</string>
     <string name="hello_message">Hello world!</string>
     <string name="button_message">I\'m a button</string>
+
+    <string name="toast_message">Here is more information</string>
+    <string name="lab2_title">Lab 2 GUI:</string>
+    <string name="Lab2_click_button">Click here</string>
+    <string name="Lab2_checkbox">Check this out</string>
+    <string name="Lab2_switch">Switch on / off</string>
+    <string name="Lab2_hint">Enter Name Here</string>
+    <string name="Lab2_Snack_Message">"The switch is now "</string>
 </resources>

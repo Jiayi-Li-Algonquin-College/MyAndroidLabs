@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Austrililan Dialet: Au~-->
 <resources>
-    <string name="app_name">JiayiLi\'s-Android-Labs</string>
-    <string name="hello_message">Hello world!</string>
-    <string name="button_message">I\'m a button</string>
+    <string name="app_name">JiayiLi\'s-Android-Labs Au~</string>
+    <string name="hello_message">Hello world! Au~</string>
+    <string name="button_message">I\'m a button Au~</string>
+
+    <string name="toast_message">Here is more information Au~</string>
+    <string name="lab2_title">Lab 2 GUI: Au~</string>
+    <string name="Lab2_click_button">Click here Au~</string>
+    <string name="Lab2_checkbox">Check this out Au~</string>
+    <string name="Lab2_switch">Switch on / off Au~</string>
+    <string name="Lab2_hint">Enter Name Here Au~</string>
+    <string name="Lab2_Snack_Message">"The switch is now Au~"</string>
 </resources>

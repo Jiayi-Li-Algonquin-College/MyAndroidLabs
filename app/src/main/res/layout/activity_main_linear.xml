@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lab2_title"
+                android:textSize="34sp"
+                android:textAlignment="center">
+            </TextView>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/my_button"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="fill"
+                android:layout_height="wrap_content"
+                android:text="@string/Lab2_click_button"
+                ></Button>
+            <CheckBox
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="fill"
+                android:layout_height="wrap_content"
+                android:text="@string/Lab2_checkbox"
+                ></CheckBox>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="fill"
+                android:layout_height="wrap_content"
+                android:src="@drawable/flag"/>
+
+            <Switch
+                android:id="@+id/bar_switch"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="fill"
+                android:layout_height="wrap_content"
+                android:text="@string/Lab2_switch"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/Lab2_hint"
+                android:inputType="textPersonName"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
