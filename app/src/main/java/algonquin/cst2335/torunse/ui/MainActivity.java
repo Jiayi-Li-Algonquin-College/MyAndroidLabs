@@ -34,14 +34,6 @@ public class MainActivity extends AppCompatActivity {
         Button btn = variableBinding.mybutton;
         EditText myedit = variableBinding.myedittext;
 
-        variableBinding.textview.setText((CharSequence) model.editString);
-        model.editString.observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                variableBinding.textview.setText("Your edit text has "+ s);
-            }
-        });
-
         model.isSelected.observe(this, selected -> {
             variableBinding.checkBox.setChecked(selected);
             variableBinding.radioButton.setChecked(selected);
@@ -50,13 +42,25 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "The value is now: " + model.isSelected,  Toast.LENGTH_LONG).show();
         });
 
+///////////////////////////////////////////////////////
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 model.editString.postValue(variableBinding.myedittext.getText().toString());
-                variableBinding.textview.setText("Your edit text has: " + model.editString);
+//                variableBinding.textview.setText("Your edit text has: " + model.editString);
             }
         });
+///////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+//        variableBinding.textview.setText((CharSequence) model.editString);
+        model.editString.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                variableBinding.textview.setText("Your edit text has "+ s);
+            }
+        });
+///////////////////////////////////////////////////////
 
 
         variableBinding.radioButton.setOnCheckedChangeListener((button, isChecked) -> {
@@ -88,37 +92,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "The width = " + width + " and height = " + height,  Toast.LENGTH_LONG).show();
             }
         });
-
-
-
-
-
-
-
-        /*
-        Switch bar_switch = (Switch) findViewById(R.id.bar_switch);
-        //CompoundButton??????????????❓❓❓❓❓❓❓❓❓❓❔❔❔❔❔❔❔❔❔❔⁉⁉⁉⁉⁉⁉⁉⁉⁉⁉‼‼‼‼‼‼
-        bar_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton switch_bt, boolean isChecked) {
-
-                String message;
-                if(isChecked){
-                    message = "on";
-                } else{
-                    message = "off";
-                }
-                                                                                    //how to translate here?❓❓❓❓❓❓❓❓???????
-                Snackbar snackbar = Snackbar.make((Switch) findViewById(R.id.bar_switch), "@string/Lab2_Snack_Message" + message, Snackbar.LENGTH_LONG);
-                snackbar.setAction("Undo", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        bar_switch.setChecked(!isChecked);
-                    }
-                });
-                snackbar.show();
-            }
-        });*/
 
 
 

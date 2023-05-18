@@ -77,17 +77,6 @@
                 android:text="@string/CoffeQuestion">
             </RadioButton>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/CoffeQuestion">
-            </RadioButton>
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
