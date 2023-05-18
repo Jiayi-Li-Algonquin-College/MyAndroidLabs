@@ -38,8 +38,9 @@ public class MainActivity extends AppCompatActivity {
             variableBinding.checkBox.setChecked(selected);
             variableBinding.radioButton.setChecked(selected);
             variableBinding.switch1.setChecked(selected);
-
-            Toast.makeText(getApplicationContext(), "The value is now: " + model.isSelected,  Toast.LENGTH_LONG).show();
+                                                                                //why I cannot use model.isSelected here?
+                                                                                //must use selected?
+            Toast.makeText(getApplicationContext(), "The value is now: " + selected,  Toast.LENGTH_SHORT).show();
         });
 
 ///////////////////////////////////////////////////////
@@ -84,12 +85,11 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Hey!",  Toast.LENGTH_SHORT).show();
             }
         });
-        int width = variableBinding.myimagebutton.getWidth();
-        int height = variableBinding.myimagebutton.getHeight();
+
         variableBinding.myimagebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "The width = " + width + " and height = " + height,  Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "The width = " + variableBinding.myimagebutton.getWidth() + " and height = " + variableBinding.myimagebutton.getHeight(),  Toast.LENGTH_SHORT).show();
             }
         });
 
