@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         variableBinding.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Hey!",  Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Hey!",  Toast.LENGTH_SHORT).show();
             }
         });
         int width = variableBinding.myimagebutton.getWidth();
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         variableBinding.myimagebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "The width = " + width + " and height = " + height,  Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "The width = " + width + " and height = " + height,  Toast.LENGTH_SHORT).show();
             }
         });
 
