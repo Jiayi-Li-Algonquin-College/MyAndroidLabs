@@ -6,6 +6,12 @@ android {
     namespace 'algonquin.cst2335.torunse'
     compileSdk 33
 
+    buildFeatures {
+        viewBinding true
+        dataBinding = true
+    }
+
+
     defaultConfig {
         applicationId "algonquin.cst2335.torunse"
         minSdk 22
@@ -26,6 +32,8 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+
 }
 
 dependencies {

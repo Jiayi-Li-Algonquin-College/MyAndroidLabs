@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,11 +17,11 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/lab2_title"
-                android:textSize="34sp"
-                android:textAlignment="center">
+                android:text="@string/hello_message"
+                android:textSize="34sp">
             </TextView>
         </LinearLayout>
 
@@ -32,34 +32,31 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/my_button"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:id="@+id/mybutton"
+                android:layout_width="wrap_content"
                 android:layout_gravity="fill"
                 android:layout_height="wrap_content"
                 android:text="@string/Lab2_click_button"
                 ></Button>
-            <CheckBox
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="fill"
-                android:layout_height="wrap_content"
-                android:text="@string/Lab2_checkbox"
-                ></CheckBox>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_weight="1"
+            <CheckBox
+                android:layout_width="wrap_content"
                 android:layout_gravity="fill"
                 android:layout_height="wrap_content"
-                android:src="@drawable/flag"/>
+                android:text="@string/Lab2_checkbox">
+            </CheckBox>
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
             <Switch
                 android:id="@+id/bar_switch"
                 android:layout_width="0dp"
@@ -74,11 +71,50 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <EditText
-                android:layout_width="match_parent"
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="first Radio Button">
+            </RadioButton>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="second Radio Button">
+            </RadioButton>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_gravity="fill"
                 android:layout_height="wrap_content"
-                android:hint="@string/Lab2_hint"
-                android:inputType="textPersonName"/>
+                android:src="@drawable/flag"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/myedittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/hinttext"
+                android:inputType="textPersonName"
+                android:text="@string/editmessage"/>
         </LinearLayout>
     </LinearLayout>
 
