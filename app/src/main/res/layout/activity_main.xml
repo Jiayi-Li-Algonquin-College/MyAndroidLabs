@@ -46,10 +46,11 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <CheckBox
+                android:id="@+id/checkBox"
                 android:layout_width="wrap_content"
                 android:layout_gravity="fill"
                 android:layout_height="wrap_content"
-                android:text="@string/Lab2_checkbox">
+                android:text="@string/CoffeQuestion">
             </CheckBox>
         </LinearLayout>
 
@@ -58,35 +59,48 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <Switch
-                android:id="@+id/bar_switch"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="fill"
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="@string/CoffeQuestion"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/CoffeQuestion">
+            </RadioButton>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/CoffeQuestion">
+            </RadioButton>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Lab2_switch"/>
-        </LinearLayout>
+                android:src="@drawable/logo_algonquin"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="first Radio Button">
-            </RadioButton>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="second Radio Button">
-            </RadioButton>
         </LinearLayout>
 
         <LinearLayout
@@ -95,10 +109,10 @@
             android:orientation="horizontal">
 
             <ImageButton
+                android:id="@+id/myimagebutton"
                 android:layout_width="wrap_content"
-                android:layout_gravity="fill"
                 android:layout_height="wrap_content"
-                android:src="@drawable/flag"/>
+                android:src="@drawable/logo_algonquin"/>
 
 
         </LinearLayout>

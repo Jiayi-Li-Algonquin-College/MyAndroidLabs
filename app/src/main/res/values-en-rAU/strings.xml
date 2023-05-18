@@ -14,4 +14,5 @@
     <string name="Lab2_Snack_Message">"The switch is now Au~"</string>
     <string name="editmessage">"I\'m an EditText Au~"</string>
     <string name="hinttext">"Write something here Au~"</string>
+    <string name="CoffeQuestion">"Do you drink coffee? Au~"</string>
 </resources>

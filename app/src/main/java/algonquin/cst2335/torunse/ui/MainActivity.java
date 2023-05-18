@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import algonquin.cst2335.torunse.R;
 import algonquin.cst2335.torunse.data.MainViewModel;
@@ -41,20 +42,59 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btn.setOnClickListener(new View.OnClickListener() {
+        model.isSelected.observe(this, selected -> {
+            variableBinding.checkBox.setChecked(selected);
+            variableBinding.radioButton.setChecked(selected);
+            variableBinding.switch1.setChecked(selected);
 
-//            The View v parameter in the onClick() method represents the view that was clicked to trigger the event.
-//            In this case, it is used to indicate which view the user clicked to trigger the Toast message.
-//            However, since it is not being used in the actual implementation of the method,
-//            it could be removed without affecting the functionality of the code.
-//            The parameter is commonly used when multiple views are associated with a single listener,
-//            and it helps to distinguish which view was clicked.
+            Toast.makeText(getApplicationContext(), "The value is now: " + model.isSelected,  Toast.LENGTH_LONG).show();
+        });
+
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 model.editString.postValue(variableBinding.myedittext.getText().toString());
                 variableBinding.textview.setText("Your edit text has: " + model.editString);
             }
         });
+
+
+        variableBinding.radioButton.setOnCheckedChangeListener((button, isChecked) -> {
+
+            model.isSelected.postValue(isChecked);
+        });
+
+        variableBinding.switch1.setOnCheckedChangeListener((button, isChecked) -> {
+
+            model.isSelected.postValue(isChecked);
+        });
+
+        variableBinding.checkBox.setOnCheckedChangeListener((button, isChecked) -> {
+
+            model.isSelected.postValue(isChecked);
+        });
+
+        variableBinding.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Hey!",  Toast.LENGTH_LONG).show();
+            }
+        });
+        int width = variableBinding.myimagebutton.getWidth();
+        int height = variableBinding.myimagebutton.getHeight();
+        variableBinding.myimagebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "The width = " + width + " and height = " + height,  Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+
+
+
+
+
         /*
         Switch bar_switch = (Switch) findViewById(R.id.bar_switch);
         //CompoundButton??????????????❓❓❓❓❓❓❓❓❓❓❔❔❔❔❔❔❔❔❔❔⁉⁉⁉⁉⁉⁉⁉⁉⁉⁉‼‼‼‼‼‼
