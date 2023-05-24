@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">JiayiLi\'s-Android-Labs</string>
-    <string name="hello_message">Hello world!</string>
-    <string name="button_message">I\'m a button</string>
+    <string name="app_name">JiayiLi\'s-Android-Labs AU~</string>
+    <string name="hello_message">Hello world! AU~</string>
+    <string name="button_message">I\'m a button AU~</string>
+    <string name="spin_message">Spin flag AU~</string>
+    <string name="button1">Button 1 a</string>
+    <string name="button2">Button 2 a</string>
+    <string name="button3">Button 3 a</string>
 </resources>
