@@ -34,7 +34,7 @@
 
             <EditText
                 android:id="@+id/myEditText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill"
                 android:hint="Type email here">
@@ -62,7 +62,7 @@
 
             <EditText
                 android:id="@+id/myEditText2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill"
                 android:inputType="textPassword">
@@ -75,11 +75,12 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/mybutton"
+                android:id="@+id/button1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="fill"
-                android:inputType="textPassword">
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:text="Login">
             </Button>
         </LinearLayout>
 
