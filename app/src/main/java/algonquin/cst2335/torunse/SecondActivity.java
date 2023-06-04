@@ -7,8 +7,10 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -19,6 +21,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class SecondActivity extends AppCompatActivity {
     TextView addressTextView;
     Button pictureButton;
@@ -27,10 +34,14 @@ public class SecondActivity extends AppCompatActivity {
     String phoneNumber;
     EditText editTextPhone;
     ImageView profileImage;
+    FileOutputStream fOut = null;
+    Bitmap thumbnail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+
+
 
         Intent fromPrevious = getIntent();
         Intent call = new Intent(Intent.ACTION_DIAL);
@@ -57,30 +68,44 @@ public class SecondActivity extends AppCompatActivity {
             startActivity(call);
         } );
 
+
         ActivityResultLauncher <Intent> cameraResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
             @Override
             public void onActivityResult(ActivityResult result) {
+
                 if (result.getResultCode() == Activity.RESULT_OK) {
                     Intent data = result.getData();
-                    Bitmap thumbnail = data.getParcelableExtra("data");
+                    thumbnail = data.getParcelableExtra("data");
                     profileImage.setImageBitmap( thumbnail );
+                }
+
+                try {
+                    fOut = openFileOutput("Picture.png", Context.MODE_PRIVATE);
+                    thumbnail.compress(Bitmap.CompressFormat.PNG, 100, fOut);
+                    fOut.flush();
+                    fOut.close();
+                }
+                catch (FileNotFoundException e)
+                {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
             }
         });
 
+        File file = new File( getFilesDir(), "Picture.png");
+
+        if(file.exists()) {
+            Bitmap theImage = BitmapFactory.decodeFile(file.getAbsolutePath());
+            profileImage.setImageBitmap(theImage);
+        }
 
         pictureButton.setOnClickListener( clk-> {
             cameraResult.launch(cameraIntent);
         } );
-
-
-
-
-
-
-
 
     }
 }
