@@ -16,13 +16,15 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SecondActivity extends AppCompatActivity {
+    TextView addressTextView;
     Button pictureButton;
     Button callButton;
     String emailAddress;
-    int phoneNumber;
+    String phoneNumber;
     EditText editTextPhone;
     ImageView profileImage;
     @Override
@@ -37,33 +39,43 @@ public class SecondActivity extends AppCompatActivity {
         emailAddress = "shouldn't show this!😅";
         emailAddress = fromPrevious.getStringExtra("EmailAddress");
 
+
+        addressTextView = findViewById(R.id.addressTextView);
+
+        if (fromPrevious != null) {
+            addressTextView.setText(emailAddress);
+        }
+
         pictureButton = findViewById(R.id.pictureButton);
         callButton = findViewById(R.id.callButton);
         profileImage = findViewById(R.id.profileImage);
+        editTextPhone = findViewById(R.id.editTextPhone);
 
         callButton.setOnClickListener( clk-> {
-            //Toast.makeText(getApplicationContext(), emailAddress,  Toast.LENGTH_SHORT).show();
-            phoneNumber = Integer.parseInt( editTextPhone.getText().toString() );
+            phoneNumber = editTextPhone.getText().toString();
             call.setData(Uri.parse("tel:" + phoneNumber));
+            startActivity(call);
         } );
 
-        pictureButton.setOnClickListener( clk-> {
-
-        } );
-
-        ActivityResultLauncher<Intent> cameraResult = registerForActivityResult(
+        ActivityResultLauncher <Intent> cameraResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == Activity. RESULT_OK) {
-                        Intent data = result.getData();
-                        Bitmap thumbnail = data.getParcelableExtra("data");
-                        profileImage.setImageBitmap( thumbnail );
-                    }
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+                    Bitmap thumbnail = data.getParcelableExtra("data");
+                    profileImage.setImageBitmap( thumbnail );
                 }
-            });
-        cameraResult.launch(cameraIntent);
+            }
+        });
+
+
+        pictureButton.setOnClickListener( clk-> {
+            cameraResult.launch(cameraIntent);
+        } );
+
+
 
 
 
