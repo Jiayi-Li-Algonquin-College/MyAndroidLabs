@@ -9,9 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="189dp"
-        tools:layout_editor_absoluteY="-125dp">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Enter your email address:"
-                android:textSize="34sp"></TextView>
+                android:textSize="24sp"></TextView>
         </LinearLayout>
 
 
@@ -37,7 +35,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill"
-                android:hint="Type email here">
+                android:hint="Type email here"
+                android:inputType="textEmailAddress">
             </EditText>
         </LinearLayout>
 
@@ -51,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Type your password:"
-                android:textSize="34sp"></TextView>
+                android:textSize="24sp"></TextView>
         </LinearLayout>
 
 
@@ -74,15 +73,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
-                android:text="Login">
-            </Button>
         </LinearLayout>
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"></Button>
 
 
     </LinearLayout>
