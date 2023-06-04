@@ -2,6 +2,7 @@ package algonquin.cst2335.torunse;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 public class SecondActivity extends AppCompatActivity {
@@ -16,4 +17,6 @@ public class SecondActivity extends AppCompatActivity {
 
 
     }
+
+    //Intent nextPage = new Intent(MainActivity.this, SecondActivity.class);
 }
