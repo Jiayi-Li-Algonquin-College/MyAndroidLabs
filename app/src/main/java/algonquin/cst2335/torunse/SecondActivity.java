@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -36,6 +37,7 @@ public class SecondActivity extends AppCompatActivity {
     ImageView profileImage;
     FileOutputStream fOut = null;
     Bitmap thumbnail;
+    private SharedPreferences prefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +63,10 @@ public class SecondActivity extends AppCompatActivity {
         callButton = findViewById(R.id.callButton);
         profileImage = findViewById(R.id.profileImage);
         editTextPhone = findViewById(R.id.editTextPhone);
+
+        prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
+        phoneNumber = prefs.getString("PhoneNumber", "");
+        editTextPhone.setText(phoneNumber);
 
         callButton.setOnClickListener( clk-> {
             phoneNumber = editTextPhone.getText().toString();
@@ -107,5 +113,16 @@ public class SecondActivity extends AppCompatActivity {
             cameraResult.launch(cameraIntent);
         } );
 
+
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        String tempPhoneNumber = editTextPhone.getText().toString();
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("PhoneNumber", tempPhoneNumber);
+        editor.apply();
     }
 }
