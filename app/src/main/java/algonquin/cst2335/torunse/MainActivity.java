@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import algonquin.cst2335.torunse.R;
+
 /**
  * MainActivity class represents an Android activity that allows the user to enter and check a password.
  * It uses various methods to validate the password complexity and display feedback messages.
