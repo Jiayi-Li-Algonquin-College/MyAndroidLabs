@@ -46,7 +46,7 @@ public class MainActivityTest {
         ViewInteraction materialButton = onView(withId(R.id.loginBtn));
         materialButton.perform(click());
 
-        ViewInteraction textView = onView( withId(R.id.textView) );
+        ViewInteraction textView = onView( withId(R.id.message) );
         textView.check(matches(withText("You shall not pass!")));
 
     }
@@ -65,7 +65,7 @@ public class MainActivityTest {
 //click the button
         materialButton.perform(click());
 //find the text view
-        ViewInteraction textView = onView( withId(R.id.textView) );
+        ViewInteraction textView = onView( withId(R.id.message) );
 //check the text
         textView.check (matches (withText ("You shall not pass!")));
     }
@@ -84,7 +84,7 @@ public class MainActivityTest {
 //click the button
         materialButton.perform(click());
 //find the text view
-        ViewInteraction textView = onView( withId(R.id.textView) );
+        ViewInteraction textView = onView( withId(R.id.message) );
 //check the text
         textView.check (matches (withText ("You shall not pass!")));
     }
@@ -103,7 +103,7 @@ public class MainActivityTest {
 //click the button
         materialButton.perform(click());
 //find the text view
-        ViewInteraction textView = onView( withId(R.id.textView) );
+        ViewInteraction textView = onView( withId(R.id.message) );
 //check the text
         textView.check (matches (withText ("You shall not pass!")));
     }
@@ -122,7 +122,7 @@ public class MainActivityTest {
 //click the button
         materialButton.perform(click());
 //find the text view
-        ViewInteraction textView = onView( withId(R.id.textView) );
+        ViewInteraction textView = onView( withId(R.id.message) );
 //check the text
         textView.check (matches (withText ("You shall not pass!")));
     }
@@ -141,7 +141,7 @@ public class MainActivityTest {
 //click the button
         materialButton.perform(click());
 //find the text view
-        ViewInteraction textView = onView( withId(R.id.textView) );
+        ViewInteraction textView = onView( withId(R.id.message) );
 //check the text
         textView.check (matches (withText ("Your password meets the requirements")));
     }
