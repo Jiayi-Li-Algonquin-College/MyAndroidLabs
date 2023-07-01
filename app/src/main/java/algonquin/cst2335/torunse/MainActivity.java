@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import algonquin.cst2335.torunse.R;
+import algonquin.cst2335.torunse.databinding.ActivityMainBinding;
 
 /**
  * MainActivity class represents an Android activity that allows the user to enter and check a password.
@@ -18,10 +19,15 @@ import algonquin.cst2335.torunse.R;
  * @version 1.0
  */
 public class MainActivity extends AppCompatActivity {
-
+    private ActivityMainBinding variableBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        variableBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(variableBinding.getRoot());
+
+        variableBinding.myTextView;
+
     }
 }
