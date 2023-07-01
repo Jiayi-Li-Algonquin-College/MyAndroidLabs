@@ -16,12 +16,7 @@ import android.widget.Toast;
  * @version 1.0
  */
 public class MainActivity extends AppCompatActivity {
-    /**This holds the text at the center of the screen*/
-    private TextView tv = null;
-    /**This holds the password that users entered at the bottom of text*/
-    private EditText et = null;
-    /**This holds button the at the bottom of the screen*/
-    private Button btn = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
