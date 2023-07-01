@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
         variableBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(variableBinding.getRoot());
 
-        variableBinding.myTextView;
+        TextView myText = variableBinding.myTextView;
+        Button myButton = variableBinding.myButton;
 
     }
 }
