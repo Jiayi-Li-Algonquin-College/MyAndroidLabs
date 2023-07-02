@@ -10,12 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import algonquin.cst2335.torunse.R;
 import algonquin.cst2335.torunse.data.ChatRoomViewModel;
 import algonquin.cst2335.torunse.databinding.ActivityChatRoomBinding;
 import algonquin.cst2335.torunse.databinding.ActivityMainBinding;
+import algonquin.cst2335.torunse.databinding.ReceiveMessageBinding;
 import algonquin.cst2335.torunse.databinding.SentMessageBinding;
 
 class MyRowHolder extends RecyclerView.ViewHolder {
@@ -31,7 +34,7 @@ class MyRowHolder extends RecyclerView.ViewHolder {
 }
 public class ChatRoom extends AppCompatActivity {
     private ActivityChatRoomBinding binding;
-    ArrayList<String> messages = new ArrayList<>();
+    ArrayList<ChatMessage> messages = new ArrayList<>();
     ChatRoomViewModel chatModel ;
     private RecyclerView.Adapter myAdapter;
     @Override
@@ -41,7 +44,7 @@ public class ChatRoom extends AppCompatActivity {
         chatModel = new ViewModelProvider(this).get(ChatRoomViewModel.class);
         messages = chatModel.messages.getValue();
         if(messages == null) {
-            chatModel.messages.postValue( messages = new ArrayList<String>());
+            chatModel.messages.postValue( messages = new ArrayList<ChatMessage>());
         }
 
         binding = ActivityChatRoomBinding.inflate(getLayoutInflater());
@@ -50,10 +53,22 @@ public class ChatRoom extends AppCompatActivity {
         binding.recycleView.setLayoutManager(new LinearLayoutManager(this));
 
         binding.sendButton.setOnClickListener(click -> {
-            messages.add(binding.textInput.getText().toString());
-            myAdapter.notifyItemInserted(messages.size()-1 );
+            String message = binding.textInput.getText().toString();
+            SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a");
+            String currentDateandTime = sdf.format(new Date());
+            ChatMessage chatMessage = new ChatMessage(message, currentDateandTime, true);
+            messages.add(chatMessage);
+            myAdapter.notifyDataSetChanged();
+            binding.textInput.setText("");
+        });
 
-            //clear the previous text:
+        binding.receiveButton.setOnClickListener(click -> {
+            String message = binding.textInput.getText().toString();
+            SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a");
+            String currentDateandTime = sdf.format(new Date());
+            ChatMessage chatMessage = new ChatMessage(message, currentDateandTime, false);
+            messages.add(chatMessage);
+            myAdapter.notifyDataSetChanged();
             binding.textInput.setText("");
         });
 
@@ -61,16 +76,24 @@ public class ChatRoom extends AppCompatActivity {
             @NonNull
             @Override
             public MyRowHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                SentMessageBinding binding = SentMessageBinding.inflate(getLayoutInflater());
-                return new MyRowHolder( binding.getRoot() );
+
+                if (viewType == 0) {
+                    SentMessageBinding binding = SentMessageBinding.inflate(getLayoutInflater());
+                    return new MyRowHolder( binding.getRoot() );
+                } else {
+                    ReceiveMessageBinding binding = ReceiveMessageBinding.inflate(getLayoutInflater());
+                    return new MyRowHolder( binding.getRoot() );
+                }
+
+//                SentMessageBinding binding = SentMessageBinding.inflate(getLayoutInflater());
+//                return new MyRowHolder( binding.getRoot() );
             }
 
             @Override
             public void onBindViewHolder(@NonNull MyRowHolder holder, int position) {
-                String obj = messages.get(position);
-
-                holder.messageText.setText(obj);
-                holder.timeText.setText("");
+                ChatMessage chatMessage = messages.get(position);
+                holder.messageText.setText(chatMessage.getMessage());
+                holder.timeText.setText(chatMessage.getTimeSent());
             }
 
             @Override
@@ -80,7 +103,12 @@ public class ChatRoom extends AppCompatActivity {
 
             @Override
             public int getItemViewType(int position) {
-                return 0;
+                ChatMessage chatMessage = messages.get(position);
+                if (chatMessage.isSentButton()) {
+                    return 0;
+                } else {
+                    return 1;
+                }
             }
         });
     }

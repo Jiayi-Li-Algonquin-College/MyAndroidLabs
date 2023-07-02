@@ -14,7 +14,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <Button
@@ -27,11 +27,19 @@
 
     <EditText
         android:id="@+id/textInput"
-        android:layout_width="310dp"
+        android:layout_width="201dp"
+        android:layout_height="52dp"
+        app:layout_constraintStart_toEndOf="@+id/sendButton"
+        app:layout_constraintTop_toTopOf="@+id/sendButton"></EditText>
+
+    <Button
+        android:id="@+id/receiveButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="receive"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/sendButton"></EditText>
+        app:layout_constraintStart_toEndOf="@+id/textInput"
+        app:layout_constraintTop_toTopOf="@+id/textInput" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
