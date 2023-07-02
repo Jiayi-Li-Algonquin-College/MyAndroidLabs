@@ -46,7 +46,7 @@ public class ChatRoom extends AppCompatActivity {
         if(messages == null) {
             chatModel.messages.postValue( messages = new ArrayList<ChatMessage>());
         }
-
+//
         binding = ActivityChatRoomBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
