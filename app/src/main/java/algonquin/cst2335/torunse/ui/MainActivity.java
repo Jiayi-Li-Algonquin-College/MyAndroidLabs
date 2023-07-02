@@ -1,4 +1,4 @@
-package algonquin.cst2335.torunse;
+package algonquin.cst2335.torunse.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
