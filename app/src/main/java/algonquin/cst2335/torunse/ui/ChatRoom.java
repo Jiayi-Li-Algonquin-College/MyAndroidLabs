@@ -34,42 +34,17 @@ public class ChatRoom extends AppCompatActivity {
     public ChatRoomViewModel chatModel ;
     public RecyclerView.Adapter myAdapter;
 
-    public MessageDatabase db = Room.databaseBuilder(getApplicationContext(), MessageDatabase.class, "database-name").build();
-    public ChatMessageDAO mDAO = db.cmDAO();
-
-    public class MyRowHolder extends RecyclerView.ViewHolder {
-        TextView messageText;
-        TextView timeText;
-        public MyRowHolder(@NonNull View itemView) {
-            super(itemView);
-
-//            itemView.setOnClickListener(clk ->{
-//
-//                int position = getAbsoluteAdapterPosition();
-//                AlertDialog.Builder builder = new AlertDialog.Builder( ChatRoom.this);
-//
-//                builder.setMessage("Do you want to delete the message: " + messageText.getText());
-//                builder.setTitle("Question: ");
-//                builder.setNegativeButton(  "No", (dialog, cl) -> { });
-//                builder.setPositiveButton(  "Yes", (dialog, cl) -> {
-//                    ChatMessage m = messages.get(position);
-//                    mDAO.deleteMessage( m );
-//                    messages.remove(position);
-//                    myAdapter.notifyItemRemoved (position);
-//                });
-//                builder.create().show();
-//            });
-
-            messageText = itemView.findViewById(R.id.messageText);
-            timeText = itemView.findViewById(R.id.timeText);
-        }
 
 
-    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //这两个必须放在onCreate里😅😅😅😅😅😅😅😅😅😅😅😅😅😅😅😅😅😅
+         MessageDatabase db = Room.databaseBuilder(getApplicationContext(), MessageDatabase.class, "database-name").build();
+         ChatMessageDAO mDAO = db.cmDAO();
 
         chatModel = new ViewModelProvider(this).get(ChatRoomViewModel.class);
         messages = chatModel.messages.getValue();
@@ -98,10 +73,9 @@ public class ChatRoom extends AppCompatActivity {
             String currentDateandTime = sdf.format(new Date());
             ChatMessage chatMessage = new ChatMessage(message, currentDateandTime, true);
 
-            // Insert the new ChatMessage into the database
-            long messageId = mDAO.insertMessage(chatMessage);
-            int messageIdInt = (int) messageId;
-            chatMessage.setId(messageIdInt);
+//            // Insert the new ChatMessage into the database
+//            long messageId = mDAO.insertMessage(chatMessage);
+//            chatMessage.setId(messageId);
 
             messages.add(chatMessage);
             myAdapter.notifyDataSetChanged();
@@ -114,10 +88,9 @@ public class ChatRoom extends AppCompatActivity {
             String currentDateandTime = sdf.format(new Date());
             ChatMessage chatMessage = new ChatMessage(message, currentDateandTime, false);
 
-            // Insert the new ChatMessage into the database
-            long messageId = mDAO.insertMessage(chatMessage);
-            int messageIdInt = (int) messageId;
-            chatMessage.setId(messageIdInt);
+//            // Insert the new ChatMessage into the database
+//            long messageId = mDAO.insertMessage(chatMessage);
+//            chatMessage.setId(messageId);
 
             messages.add(chatMessage);
             myAdapter.notifyDataSetChanged();
@@ -164,4 +137,36 @@ public class ChatRoom extends AppCompatActivity {
             }
         });
     }
+
+    public class MyRowHolder extends RecyclerView.ViewHolder {
+        TextView messageText;
+        TextView timeText;
+        public MyRowHolder(@NonNull View itemView) {
+            super(itemView);
+
+            itemView.setOnClickListener(clk ->{
+
+                int position = getAbsoluteAdapterPosition();
+                AlertDialog.Builder builder = new AlertDialog.Builder( ChatRoom.this);
+
+                builder.setMessage("Do you want to delete the message: " + messageText.getText())
+                        .setTitle("Question: ")
+                        .setNegativeButton("No", (dialog, cl) -> { })
+                        .setPositiveButton( "Yes", (dialog, cl) -> {
+
+
+                            messages.remove(position);
+                            myAdapter.notifyItemRemoved (position);
+                        })
+                        .create().show();
+                    });
+
+            messageText = itemView.findViewById(R.id.messageText);
+            timeText = itemView.findViewById(R.id.timeText);
+        }
+
+
+    }
+
+
 }
