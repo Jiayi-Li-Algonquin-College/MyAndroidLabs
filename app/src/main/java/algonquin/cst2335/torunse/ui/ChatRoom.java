@@ -2,6 +2,8 @@ package algonquin.cst2335.torunse.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,7 +50,7 @@ public class ChatRoom extends AppCompatActivity {
          MessageDatabase db = Room.databaseBuilder(getApplicationContext(), MessageDatabase.class, "database-name").build();
          ChatMessageDAO mDAO = db.cmDAO();
 
-        chatModel = new ViewModelProvider(this).get(ChatRoomViewModel.class);
+         chatModel = new ViewModelProvider(this).get(ChatRoomViewModel.class);
         messages = chatModel.messages.getValue();
         if(messages == null) {
             chatModel.messages.postValue( messages = new ArrayList<ChatMessage>());
@@ -63,7 +65,7 @@ public class ChatRoom extends AppCompatActivity {
 
 
         }
-//
+
         binding = ActivityChatRoomBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -75,9 +77,7 @@ public class ChatRoom extends AppCompatActivity {
             String currentDateandTime = sdf.format(new Date());
             ChatMessage chatMessage = new ChatMessage(message, currentDateandTime, true);
 
-//            // Insert the new ChatMessage into the database
-//            long messageId = mDAO.insertMessage(chatMessage);
-//            chatMessage.setId(messageId);
+
 
             messages.add(chatMessage);
             myAdapter.notifyDataSetChanged();
@@ -90,9 +90,7 @@ public class ChatRoom extends AppCompatActivity {
             String currentDateandTime = sdf.format(new Date());
             ChatMessage chatMessage = new ChatMessage(message, currentDateandTime, false);
 
-//            // Insert the new ChatMessage into the database
-//            long messageId = mDAO.insertMessage(chatMessage);
-//            chatMessage.setId(messageId);
+
 
             messages.add(chatMessage);
             myAdapter.notifyDataSetChanged();
@@ -112,8 +110,7 @@ public class ChatRoom extends AppCompatActivity {
                     return new MyRowHolder( binding.getRoot() );
                 }
 
-//                SentMessageBinding binding = SentMessageBinding.inflate(getLayoutInflater());
-//                return new MyRowHolder( binding.getRoot() );
+
             }
 
             @Override
@@ -138,6 +135,17 @@ public class ChatRoom extends AppCompatActivity {
                 }
             }
         });
+
+        chatModel.selectedMessage.observe(this, newMessageValue -> {
+            // Handle selected message change
+            // Create a new fragment to show the details for the selected message
+            MessageDetailsFragment chatFragment = new MessageDetailsFragment(newMessageValue);
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentLocation, chatFragment)
+                    .addToBackStack("")
+                    .commit();
+        });
     }
 
     public class MyRowHolder extends RecyclerView.ViewHolder {
@@ -150,7 +158,7 @@ public class ChatRoom extends AppCompatActivity {
 
                 int position = getAbsoluteAdapterPosition();
 
-
+                /*
                 AlertDialog.Builder builder = new AlertDialog.Builder( ChatRoom.this);
 
                 builder.setMessage("Do you want to delete the message: " + messageText.getText())
@@ -169,8 +177,13 @@ public class ChatRoom extends AppCompatActivity {
                                     })
                                     .show();
                         })
-                        .create().show();
-                    });
+                        .create().show();*/
+
+                ChatMessage selected = messages.get(position);
+                chatModel.selectedMessage.postValue(selected);
+
+
+            });
 
             messageText = itemView.findViewById(R.id.messageText);
             timeText = itemView.findViewById(R.id.timeText);
