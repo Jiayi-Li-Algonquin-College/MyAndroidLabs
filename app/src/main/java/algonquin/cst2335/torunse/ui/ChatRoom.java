@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +39,7 @@ public class ChatRoom extends AppCompatActivity {
     public ArrayList<ChatMessage> messages = new ArrayList<>();
     public ChatRoomViewModel chatModel ;
     public RecyclerView.Adapter myAdapter;
-
+    SharedPreferences prefs;
 
 
 
@@ -49,6 +51,11 @@ public class ChatRoom extends AppCompatActivity {
         //这两个必须放在onCreate里😅😅😅😅😅😅😅😅😅😅😅😅😅😅😅😅😅😅
          MessageDatabase db = Room.databaseBuilder(getApplicationContext(), MessageDatabase.class, "database-name").build();
          ChatMessageDAO mDAO = db.cmDAO();
+        prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
+        String searchHistory = prefs.getString("searchHistory", "");
+
+
+
 
          chatModel = new ViewModelProvider(this).get(ChatRoomViewModel.class);
         messages = chatModel.messages.getValue();
@@ -72,6 +79,16 @@ public class ChatRoom extends AppCompatActivity {
         binding.recycleView.setLayoutManager(new LinearLayoutManager(this));
 
         binding.sendButton.setOnClickListener(click -> {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("searchHistory", binding.textInput.getText().toString());
+            editor.apply();
+
+
+
+
+
+
+
             String message = binding.textInput.getText().toString();
             SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a");
             String currentDateandTime = sdf.format(new Date());
@@ -148,7 +165,20 @@ public class ChatRoom extends AppCompatActivity {
         });
     }
 
-    public class MyRowHolder extends RecyclerView.ViewHolder {
+    @Override
+    public void onStart(){
+        super.onStart();
+        prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
+        String searchHistory = prefs.getString("searchHistory", "");
+        binding.textInput.setText(searchHistory);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+        public class MyRowHolder extends RecyclerView.ViewHolder {
         TextView messageText;
         TextView timeText;
         public MyRowHolder( View itemView) {

@@ -10,9 +10,6 @@
 
     <FrameLayout
         android:id="@+id/fragmentLocation"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white">
@@ -42,8 +39,9 @@
 
             <EditText
                 android:id="@+id/textInput"
-                android:layout_width="201dp"
-                android:layout_height="52dp"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/sendButton"
                 app:layout_constraintTop_toTopOf="@+id/sendButton"></EditText>
 
@@ -51,10 +49,12 @@
                 android:id="@+id/receiveButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="300dp"
                 android:text="receive"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textInput"
-                app:layout_constraintTop_toTopOf="@+id/textInput" />
+                app:layout_constraintTop_toTopOf="@+id/textInput"
+                app:layout_constraintVertical_bias="0.0" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
