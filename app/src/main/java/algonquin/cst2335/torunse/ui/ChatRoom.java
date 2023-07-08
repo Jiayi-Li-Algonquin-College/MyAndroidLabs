@@ -163,6 +163,21 @@ public class ChatRoom extends AppCompatActivity {
                     .addToBackStack("")
                     .commit();
         });
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     @Override
@@ -213,10 +228,17 @@ public class ChatRoom extends AppCompatActivity {
                 chatModel.selectedMessage.postValue(selected);
 
 
+
+
             });
+
+
 
             messageText = itemView.findViewById(R.id.messageText);
             timeText = itemView.findViewById(R.id.timeText);
+
+
+
         }
 
 
