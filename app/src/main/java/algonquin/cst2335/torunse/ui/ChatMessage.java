@@ -13,6 +13,9 @@ public class ChatMessage {
     public String message;
     @ColumnInfo(name="TimeSent")
     public String timeSent;
+
+
+
     @ColumnInfo(name="IsSentButton")
     public boolean isSentButton;
 
@@ -27,6 +30,9 @@ public class ChatMessage {
     public long getId() {
         return id;
     }
+    public void setSentButton(boolean sentButton) {
+        isSentButton = sentButton;
+    }
     public String getMessage() {
         return message;
     }
@@ -35,7 +41,7 @@ public class ChatMessage {
         return timeSent;
     }
 
-    public boolean isSentButton() {
+    public boolean getIsSentButton() {
         return isSentButton;
     }
 }

@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    >
+    android:background="@color/white">
 
 
     <TextView
@@ -14,53 +13,49 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="70dp"
+        android:background="@color/white"
         android:text="Destination GoesHere"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/white"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/databaseText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:background="@color/white"
         android:text="Terminal goes here"
         app:layout_constraintStart_toStartOf="@+id/sendText"
-        app:layout_constraintTop_toBottomOf="@+id/sendText"
-        android:background="@color/white"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/sendText" />
 
     <TextView
         android:id="@+id/timeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:background="@color/white"
         android:text="Gate goes here"
         app:layout_constraintStart_toStartOf="@+id/messageText"
-        app:layout_constraintTop_toBottomOf="@+id/messageText"
-        android:background="@color/white"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/messageText" />
 
     <TextView
         android:id="@+id/sendText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:background="@color/white"
         android:text="Delay goes here"
         app:layout_constraintStart_toStartOf="@+id/timeText"
-        app:layout_constraintTop_toBottomOf="@+id/timeText"
-        android:background="@color/white"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/timeText" />
 
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="ACTUALLY IS DELETE FOR TESTING"
-        app:layout_constraintStart_toStartOf="@+id/databaseText"
-        app:layout_constraintTop_toBottomOf="@+id/databaseText" />
+    <!--    <Button-->
+    <!--        android:id="@+id/saveButton"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="30dp"-->
+    <!--        android:text="ACTUALLY IS DELETE FOR TESTING"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/databaseText"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/databaseText" />-->
 
     <Button
         android:id="@+id/testForRealSaveButton"
@@ -68,6 +63,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="REAL SAVE"
-        app:layout_constraintStart_toStartOf="@+id/saveButton"
-        app:layout_constraintTop_toBottomOf="@+id/saveButton" />
+        app:layout_constraintStart_toStartOf="@+id/databaseText"
+        app:layout_constraintTop_toBottomOf="@+id/databaseText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

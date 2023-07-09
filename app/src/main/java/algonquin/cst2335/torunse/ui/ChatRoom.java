@@ -41,7 +41,7 @@ public class ChatRoom extends AppCompatActivity {
     public RecyclerView.Adapter myAdapter;
     SharedPreferences prefs;
     public int postionTemp;
-
+    public ChatMessage selected;
 
 
 
@@ -68,6 +68,8 @@ public class ChatRoom extends AppCompatActivity {
         }
         binding.showListButton.setOnClickListener(clickButton->{
 
+            messages.clear();
+            myAdapter.notifyDataSetChanged();
 
 
             Executor thread = Executors.newSingleThreadExecutor();
@@ -154,7 +156,7 @@ public class ChatRoom extends AppCompatActivity {
             @Override
             public int getItemViewType(int position) {
                 ChatMessage chatMessage = messages.get(position);
-                if (chatMessage.isSentButton()) {
+                if (chatMessage.getIsSentButton()) {
                     return 0;
                 } else {
                     return 1;
@@ -166,12 +168,22 @@ public class ChatRoom extends AppCompatActivity {
             // Handle selected message change
             // Create a new fragment to show the details for the selected message
 
-            MessageDetailsFragment chatFragment = new MessageDetailsFragment(newMessageValue,messages,postionTemp, myAdapter, mDAO);
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragmentLocation, chatFragment)
-                    .addToBackStack("")
-                    .commit();
+            if(selected.getIsSentButton()){
+                MessageDetailsFragment chatFragment = new MessageDetailsFragment(newMessageValue,messages,postionTemp, myAdapter, mDAO);
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentLocation, chatFragment)
+                        .addToBackStack("")
+                        .commit();
+            }else{
+                SavedMessageDetailsFragment chatFragment = new SavedMessageDetailsFragment(newMessageValue,messages,postionTemp, myAdapter, mDAO);
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentLocation, chatFragment)
+                        .addToBackStack("")
+                        .commit();
+            }
+
         });
 
     }
@@ -220,7 +232,7 @@ public class ChatRoom extends AppCompatActivity {
                         })
                         .create().show();*/
                 postionTemp = position;
-                ChatMessage selected = messages.get(position);
+                selected = messages.get(position);
 
                 chatModel.selectedMessage.postValue(selected);
 

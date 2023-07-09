@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
@@ -46,47 +47,52 @@ public class MessageDetailsFragment extends Fragment {
         binding.timeText.setText(selected.timeSent);
         binding.databaseText.setText("Id = " + selected.id);
 
-        binding.saveButton.setOnClickListener(click -> {
-//            Toast.makeText(getActivity(), "This is my Toast message!",
-//                    Toast.LENGTH_LONG).show();
-            AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
-
-            builder.setMessage("Do you want to delete the message: " + binding.messageText.getText())
-                    .setTitle("Question: ")
-                    .setNegativeButton("No", (dialog, cl) -> { })
-                    .setPositiveButton( "Yes", (dialog, cl) -> {
-
-                        ChatMessage removedMessage = messages.get(postionTemp);
-                        messages.remove(postionTemp);
-                        myAdapter.notifyItemRemoved (postionTemp);
-
-                        Executor thread = Executors.newSingleThreadExecutor();
-                        thread.execute(() ->
-                        {
-                            mDAO.deleteMessage(selected);
-                        });
-
-
-
-                        Snackbar.make(binding.messageText, "You deleted message #"+ postionTemp, Snackbar.LENGTH_LONG)
-                                .setAction( "Undo", clicked -> {
-                                    messages.add(postionTemp, removedMessage);
-                                    myAdapter.notifyItemInserted (postionTemp);
-
-                                    Executor anotherThread = Executors.newSingleThreadExecutor();
-                                    anotherThread.execute(() ->
-                                    {
-                                        mDAO.insertMessage(removedMessage);
-                                    });
-
-                                })
-                                .show();
-                    })
-                    .create().show();
-
-        });
+//        binding.saveButton.setOnClickListener(click -> {
+////            Toast.makeText(getActivity(), "This is my Toast message!",
+////                    Toast.LENGTH_LONG).show();
+//            AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
+//
+//            builder.setMessage("Do you want to delete the message: " + binding.messageText.getText())
+//                    .setTitle("Question: ")
+//                    .setNegativeButton("No", (dialog, cl) -> { })
+//                    .setPositiveButton( "Yes", (dialog, cl) -> {
+//
+//                        ChatMessage removedMessage = messages.get(postionTemp);
+//                        messages.remove(postionTemp);
+//                        myAdapter.notifyItemRemoved (postionTemp);
+//
+//                        Executor thread = Executors.newSingleThreadExecutor();
+//                        thread.execute(() ->
+//                        {
+//                            mDAO.deleteMessage(selected);
+//                        });
+//
+//
+//
+//                        Snackbar.make(binding.messageText, "You deleted message #"+ postionTemp, Snackbar.LENGTH_LONG)
+//                                .setAction( "Undo", clicked -> {
+//                                    messages.add(postionTemp, removedMessage);
+//                                    myAdapter.notifyItemInserted (postionTemp);
+//
+//                                    Executor anotherThread = Executors.newSingleThreadExecutor();
+//                                    anotherThread.execute(() ->
+//                                    {
+//                                        mDAO.insertMessage(removedMessage);
+//                                    });
+//
+//                                })
+//                                .show();
+//                    })
+//                    .create().show();
+//
+//        });
 
         binding.testForRealSaveButton.setOnClickListener(realClick -> {
+            Toast.makeText(getActivity(), "You just clicked the save button!",
+                    Toast.LENGTH_LONG).show();
+            selected.setSentButton(false);
+
+
             AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
 
             Executor thread = Executors.newSingleThreadExecutor();
