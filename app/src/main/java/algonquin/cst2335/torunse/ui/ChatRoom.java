@@ -85,11 +85,6 @@ public class ChatRoom extends AppCompatActivity {
             editor.apply();
 
 
-
-
-
-
-
             String message = binding.textInput.getText().toString();
             SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a");
             String currentDateandTime = sdf.format(new Date());
@@ -165,20 +160,6 @@ public class ChatRoom extends AppCompatActivity {
                     .addToBackStack("")
                     .commit();
         });
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
 
     }
 

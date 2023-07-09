@@ -62,18 +62,6 @@ public class MessageDetailsFragment extends Fragment {
                     })
                     .create().show();
 
-
-
-
-
-
-
-
-
-
-
-
-
         });
 
         return binding.getRoot();
