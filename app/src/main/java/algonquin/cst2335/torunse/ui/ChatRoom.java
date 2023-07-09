@@ -56,12 +56,19 @@ public class ChatRoom extends AppCompatActivity {
         String searchHistory = prefs.getString("searchHistory", "");
 
 
-
+        binding = ActivityChatRoomBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
          chatModel = new ViewModelProvider(this).get(ChatRoomViewModel.class);
         messages = chatModel.messages.getValue();
-        if(messages == null) {
+
+        if(messages == null)
+        {
             chatModel.messages.postValue( messages = new ArrayList<ChatMessage>());
+        }
+        binding.showListButton.setOnClickListener(clickButton->{
+
+
 
             Executor thread = Executors.newSingleThreadExecutor();
             thread.execute(() ->
@@ -71,11 +78,10 @@ public class ChatRoom extends AppCompatActivity {
                 runOnUiThread( () ->  binding.recycleView.setAdapter( myAdapter )); //You can then load the RecyclerView
             });
 
+        });
 
-        }
 
-        binding = ActivityChatRoomBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+
 
         binding.recycleView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -88,9 +94,16 @@ public class ChatRoom extends AppCompatActivity {
             String message = binding.textInput.getText().toString();
             SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a");
             String currentDateandTime = sdf.format(new Date());
+
             ChatMessage chatMessage = new ChatMessage(message, currentDateandTime, true);
-
-
+            /*------------------------------------------------------------------
+            Executor thread = Executors.newSingleThreadExecutor();
+            thread.execute(() ->
+            {
+                mDAO.insertMessage(chatMessage);
+            });
+            */
+            //------------------------------------------------------------------
 
             messages.add(chatMessage);
             myAdapter.notifyDataSetChanged();
@@ -153,7 +166,7 @@ public class ChatRoom extends AppCompatActivity {
             // Handle selected message change
             // Create a new fragment to show the details for the selected message
 
-            MessageDetailsFragment chatFragment = new MessageDetailsFragment(newMessageValue,messages,postionTemp, myAdapter);
+            MessageDetailsFragment chatFragment = new MessageDetailsFragment(newMessageValue,messages,postionTemp, myAdapter, mDAO);
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragmentLocation, chatFragment)
