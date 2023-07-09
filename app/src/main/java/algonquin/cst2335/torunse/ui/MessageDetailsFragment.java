@@ -4,20 +4,30 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.ArrayList;
 
 import algonquin.cst2335.torunse.databinding.DetailsLayoutBinding;
 
 public class MessageDetailsFragment extends Fragment {
     ChatMessage selected;
+    ArrayList<ChatMessage> messages;
+    public int postionTemp;
+    public RecyclerView.Adapter myAdapter;
 
-    public MessageDetailsFragment (ChatMessage m) {
+
+    public MessageDetailsFragment (ChatMessage m, ArrayList<ChatMessage> messages, int postionTemp, RecyclerView.Adapter myAdapter) {
+
         selected = m;
+        this.messages = messages;
+        this.postionTemp = postionTemp;
+        this.myAdapter = myAdapter;
     }
 
     @Override
@@ -32,21 +42,21 @@ public class MessageDetailsFragment extends Fragment {
         binding.saveButton.setOnClickListener(click -> {
 //            Toast.makeText(getActivity(), "This is my Toast message!",
 //                    Toast.LENGTH_LONG).show();
-            AlertDialog.Builder builder = new AlertDialog.Builder( ChatRoom.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
 
             builder.setMessage("Do you want to delete the message: " + binding.messageText.getText())
                     .setTitle("Question: ")
                     .setNegativeButton("No", (dialog, cl) -> { })
                     .setPositiveButton( "Yes", (dialog, cl) -> {
 
-                        ChatMessage removedMessage = messages.get(position);
-                        messages.remove(position);
-                        myAdapter.notifyItemRemoved (position);
+                        ChatMessage removedMessage = messages.get(postionTemp);
+                        messages.remove(postionTemp);
+                        myAdapter.notifyItemRemoved (postionTemp);
 
-                        Snackbar.make(messageText, "You deleted message #"+ position, Snackbar.LENGTH_LONG)
+                        Snackbar.make(binding.messageText, "You deleted message #"+ postionTemp, Snackbar.LENGTH_LONG)
                                 .setAction( "Undo", clicked -> {
-                                    messages.add(position, removedMessage);
-                                    myAdapter.notifyItemInserted (position);
+                                    messages.add(postionTemp, removedMessage);
+                                    myAdapter.notifyItemInserted (postionTemp);
                                 })
                                 .show();
                     })

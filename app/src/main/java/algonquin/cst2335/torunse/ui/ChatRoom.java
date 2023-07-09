@@ -40,6 +40,7 @@ public class ChatRoom extends AppCompatActivity {
     public ChatRoomViewModel chatModel ;
     public RecyclerView.Adapter myAdapter;
     SharedPreferences prefs;
+    public int postionTemp;
 
 
 
@@ -156,7 +157,8 @@ public class ChatRoom extends AppCompatActivity {
         chatModel.selectedMessage.observe(this, newMessageValue -> {
             // Handle selected message change
             // Create a new fragment to show the details for the selected message
-            MessageDetailsFragment chatFragment = new MessageDetailsFragment(newMessageValue);
+
+            MessageDetailsFragment chatFragment = new MessageDetailsFragment(newMessageValue,messages,postionTemp, myAdapter);
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragmentLocation, chatFragment)
@@ -223,8 +225,9 @@ public class ChatRoom extends AppCompatActivity {
                                     .show();
                         })
                         .create().show();*/
-
+                postionTemp = position;
                 ChatMessage selected = messages.get(position);
+
                 chatModel.selectedMessage.postValue(selected);
 
 
