@@ -28,14 +28,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Toolbar
+            <androidx.appcompat.widget.Toolbar
                 android:id="@+id/myToolbar"
                 android:layout_width="396dp"
                 android:layout_height="52dp"
                 android:layout_marginTop="500dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/recycleView" />
+                app:layout_constraintTop_toTopOf="@+id/recycleView"/>
 
             <Button
                 android:id="@+id/sendButton"
