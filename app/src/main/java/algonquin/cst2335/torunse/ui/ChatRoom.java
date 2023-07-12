@@ -69,6 +69,10 @@ public class ChatRoom extends AppCompatActivity {
         binding = ActivityChatRoomBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        setSupportActionBar(binding.myToolbar);
+
+
+
         binding.recycleView.setLayoutManager(new LinearLayoutManager(this));
 
         binding.sendButton.setOnClickListener(click -> {
