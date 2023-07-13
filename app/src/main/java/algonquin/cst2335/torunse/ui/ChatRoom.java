@@ -31,6 +31,7 @@ import algonquin.cst2335.torunse.R;
 import algonquin.cst2335.torunse.data.ChatRoomViewModel;
 import algonquin.cst2335.torunse.databinding.ActivityChatRoomBinding;
 import algonquin.cst2335.torunse.databinding.ActivityMainBinding;
+import algonquin.cst2335.torunse.databinding.DetailsLayoutBinding;
 import algonquin.cst2335.torunse.databinding.ReceiveMessageBinding;
 import algonquin.cst2335.torunse.databinding.SentMessageBinding;
 
@@ -42,8 +43,9 @@ public class ChatRoom extends AppCompatActivity {
     public ArrayList<ChatMessage> messages = new ArrayList<>();
     public ChatRoomViewModel chatModel ;
     public RecyclerView.Adapter myAdapter;
+    public DetailsLayoutBinding detailsLayoutBinding;
 
-    public int position;
+    public int TempPosition;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -59,26 +61,21 @@ public class ChatRoom extends AppCompatActivity {
             //asking if the user wants to delete this message.
             AlertDialog.Builder builder = new AlertDialog.Builder(ChatRoom.this);
 
-            builder.setMessage("Do you want to delete the message: ")
+            builder.setMessage("Do you want to delete the message that you just clicked?")
                     .setTitle("Question: ")
                     .setNegativeButton("No", (dialog, cl) -> {
                     })
                     .setPositiveButton("Yes", (dialog, cl) -> {
 
-                        ChatMessage removedMessage = messages.get(position);
-                        messages.remove(position);
-                        myAdapter.notifyItemRemoved(position);
+//                        ChatMessage removedMessage = messages.get(TempPosition);
+                        messages.remove(TempPosition);
+                        myAdapter.notifyItemRemoved(TempPosition);
+                        Toast.makeText(getApplicationContext(), "You just deleted the message at position: "+TempPosition , Toast.LENGTH_SHORT).show();
 
-                        Snackbar.make(messageText, "You deleted message #" + position, Snackbar.LENGTH_LONG)
-                                .setAction("Undo", click -> {
-                                    messages.add(position, removedMessage);
-                                    myAdapter.notifyItemInserted(position);
-                                })
-                                .show();
                     })
                     .create().show();
         } else if (itemId == R.id.about) {
-            Toast.makeText(getApplicationContext(), "STRING MESSAGE", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "This is a about message 😁" , Toast.LENGTH_SHORT).show();
         }
 
         return true;
@@ -202,7 +199,7 @@ public class ChatRoom extends AppCompatActivity {
 
             itemView.setOnClickListener(clk ->{
 
-                position = getAbsoluteAdapterPosition();
+                int position = getAbsoluteAdapterPosition();
 
                 /*
                 AlertDialog.Builder builder = new AlertDialog.Builder( ChatRoom.this);
@@ -224,6 +221,7 @@ public class ChatRoom extends AppCompatActivity {
                                     .show();
                         })
                         .create().show();*/
+                TempPosition = position;
 
                 ChatMessage selected = messages.get(position);
                 chatModel.selectedMessage.postValue(selected);

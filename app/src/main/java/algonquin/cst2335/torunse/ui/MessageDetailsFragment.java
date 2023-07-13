@@ -2,15 +2,20 @@ package algonquin.cst2335.torunse.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import algonquin.cst2335.torunse.R;
 import algonquin.cst2335.torunse.databinding.DetailsLayoutBinding;
 
 public class MessageDetailsFragment extends Fragment {
     ChatMessage selected;
+
+
+
 
     public MessageDetailsFragment (ChatMessage m) {
         selected = m;
