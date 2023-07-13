@@ -151,7 +151,7 @@ public class ChatRoom extends AppCompatActivity {
                 int position = getAbsoluteAdapterPosition();
 
 
-                AlertDialog.Builder builder = new AlertDialog.Builder( ChatRoom.this);
+/*                AlertDialog.Builder builder = new AlertDialog.Builder( ChatRoom.this);
 
                 builder.setMessage("Do you want to delete the message: " + messageText.getText())
                         .setTitle("Question: ")
@@ -169,7 +169,7 @@ public class ChatRoom extends AppCompatActivity {
                                     })
                                     .show();
                         })
-                        .create().show();
+                        .create().show();*/
                     });
 
             messageText = itemView.findViewById(R.id.messageText);
