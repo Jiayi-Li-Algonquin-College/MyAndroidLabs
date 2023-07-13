@@ -42,7 +42,7 @@ public class ChatRoom extends AppCompatActivity {
     public ArrayList<ChatMessage> messages = new ArrayList<>();
     public ChatRoomViewModel chatModel ;
     public RecyclerView.Adapter myAdapter;
-    public TextView messageText;
+
     public int position;
 
     @Override
@@ -59,7 +59,7 @@ public class ChatRoom extends AppCompatActivity {
             //asking if the user wants to delete this message.
             AlertDialog.Builder builder = new AlertDialog.Builder(ChatRoom.this);
 
-            builder.setMessage("Do you want to delete the message: " + messageText.getText())
+            builder.setMessage("Do you want to delete the message: ")
                     .setTitle("Question: ")
                     .setNegativeButton("No", (dialog, cl) -> {
                     })
@@ -195,7 +195,7 @@ public class ChatRoom extends AppCompatActivity {
     }
 
     public class MyRowHolder extends RecyclerView.ViewHolder {
-
+        TextView messageText;
         TextView timeText;
         public MyRowHolder( View itemView) {
             super(itemView);
