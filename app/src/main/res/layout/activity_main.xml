@@ -7,53 +7,64 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Type in the name of a city:" />
+        android:text="Enter city name:"
+        android:textSize="18sp" />
+
     <EditText
-        android:hint="Type city name here"
+        android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/cityTextField"/>
+        android:inputType="text"
+        android:layout_marginTop="8dp"
+        android:hint="City name" />
+
     <Button
-        android:id="@+id/forecastButton"
-        android:layout_width="match_parent"
+        android:id="@+id/getForecast"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get Forecast"/>
+        android:layout_gravity="center"
+        android:text="Get Forecast" />
+
     <TextView
         android:id="@+id/temp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Temp goes here"
-        android:visibility="invisible"/>
-    <TextView
-        android:id="@+id/maxTemp"
-        android:text="Max goes here"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"/>
+        android:layout_marginTop="16dp"
+        android:textSize="18sp"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/minTemp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Min goes here"
-        android:visibility="invisible"/>
+        android:textSize="18sp"
+        android:visibility="invisible" />
+
     <TextView
-        android:id="@+id/humitidy"
-        android:layout_width="match_parent"
+        android:id="@+id/maxTemp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Humidity goes here"
-        android:visibility="invisible"/>
+        android:textSize="18sp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:visibility="invisible" />
+
     <ImageView
-        android:id="@+id/icon"
+        android:id="@+id/weatherIcon"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
+
     <TextView
         android:id="@+id/description"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Description goes here"
-        android:visibility="invisible"/>
-
+        android:textSize="18sp"
+        android:visibility="invisible" />
 
 </LinearLayout>
