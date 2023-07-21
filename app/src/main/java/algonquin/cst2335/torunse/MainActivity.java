@@ -8,6 +8,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import algonquin.cst2335.torunse.R;
 import algonquin.cst2335.torunse.databinding.ActivityMainBinding;
 
@@ -19,16 +27,35 @@ import algonquin.cst2335.torunse.databinding.ActivityMainBinding;
  * @version 1.0
  */
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding variableBinding;
+    private ActivityMainBinding mainBinding;
+    protected String cityName;
+    RequestQueue queue = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        variableBinding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(variableBinding.getRoot());
+        mainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(mainBinding.getRoot());
 
-        TextView myText = variableBinding.myTextView;
-        Button myButton = variableBinding.myButton;
+        queue = Volley.newRequestQueue(this);
+
+        mainBinding.getForecast.setOnClickListener(click -> {
+            cityName = mainBinding.cityTextField.getText().toString();
+            String stringURL = null;
+
+                stringURL = "https://api.openweathermap.org/data/2.5/weather?q="
+                        + URLEncoder.encode(cityName, "UTF-8")
+                        + "&appid=a98af505e8630cb978c87fdd695e495f&units=metric";
+
+
+            //dsfasdfsafddsaf
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, stringURL, null,
+                    (response) -> {    },
+                    (error) -> {    });
+            queue.add(request);
+        });
+
+
 
     }
 }
